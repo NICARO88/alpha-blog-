@@ -22,8 +22,5 @@ test:
 
 
 production:
-  url: <%= ENV["DATABASE_URL"] %>
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 3) %>
-  variables:
-    statement_timeout: 5000
-
+  <<: *default
+  database: storage/production.sqlite3
