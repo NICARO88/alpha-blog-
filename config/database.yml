@@ -26,9 +26,12 @@ test:
   #database: storage/production.sqlite3
 
 production:
-  url: <%= ENV["DATABASE_URL"] %>
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 3) %>
-  variables:
-    statement_timeout: 5000
+  primary:
+    url: <%= ENV["DATABASE_URL"] %>
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS", 3) %>
+    variables:
+      statement_timeout: 5000
 
-
+  cable:
+    url: <%= ENV["DATABASE_URL"] %>
+    migrations_paths: db/cable_migrate
